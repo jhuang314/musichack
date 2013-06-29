@@ -375,9 +375,13 @@ function loadPreset()
 	   pnsv.src = 'http://pchnote.appspot.com/scoreviewer/scoreviewer.nocache.js';
 	   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(pnsv);
 	   })();
-var _pnq = _pnq || [];
+	   var _pnq;
+var relo = function(id) { 
+	_pnq = _pnq || [];
 _pnq.push(['rootElement', 'PeachnoteViewerContainerId']);
 _pnq.push(['loadScore', id]);
+}
+	   relo(id);
 </script>
 			
 		<div class="row">
@@ -389,8 +393,8 @@ _pnq.push(['loadScore', id]);
 			
 		  <div class=input-prepend input-append">
 		  <span class="add-on"><strong>Enter music id:</strong></span>
-		  <input type="text" id="searchbox">
-		  <input type="button" value="search" onclick="javascript: i_pnq.push(['loadScore', id]);" class="btn" title="id" id="search"/>
+		  <input type="text" id="searchbox" value="IMSLP00001">
+		  <input type="button" value="search" onclick="javascript: relo(document.getElementById('searchbox').value);" class="btn" title="id" id="search"/>
 		  </div>
 		</div>
       <hr>
