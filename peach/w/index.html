@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <title>Music Ngram Viewer and Search Engine</title>
+    <meta name="description" content="Music Ngram Viewer and Search Engine">
+    <meta name="keywords" content="music ngrams, music ngram viewer, 
+        sheet music search, music score search, melody search, chord progression search,
+        imslp search, note sequences">
+
+    <meta name="google-site-verification" content="Eg4vUJxop_tWrpTsi-CF-DJca7LAaC5ZEt-GtMGj4zw" />
+    <meta name="y_key" content="29d70b6b5edcee3c" />
+
+    <meta property="og:title" content="Peachnote Music Search" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.peachnote.com" />
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="Peachnote" />
+    <meta property="fb:admins" content="725322739" />
+
+    <link type="text/css" rel="stylesheet" href="css/MusicScoreSearch.css">
+
+    <script type="text/javascript" language="javascript" src="musicscoresearch/musicscoresearch.nocache.js"></script>
+    <script type="text/javascript" language="javascript" src="../ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <!--<script type="text/javascript" language="javascript" src="/js/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" language="javascript" src="http://yandex.st/raphael/1.5.2/raphael.js"></script>-->
+    <script type="text/javascript" language="javascript" src="js/raphael.js"></script>
+    <script type="text/javascript" language="javascript" src="js/vexflow.js"></script>
+    <script type="text/javascript" src="../platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" language="javascript" src="js/viz.js"></script>
+
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-9937279-8']);
+        _gaq.push(['_setDomainName', 'none']);
+        _gaq.push(['_setAllowLinker', true]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+
+
+</head>
+
+<body>
+
+<iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+
+<noscript>
+    <div style="width: 22em; position: relative; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for the application to display correctly.<p>
+        Please let me know if you would like to use a static version
+        of the search engine - I will develop it for you.
+    </div>
+</noscript>
+
+<div id="wrapper" style="display:none">
+
+    <table style="width:938px;border-spacing:0px;">
+        <!-- <tr style="background-color:yellow;"><center><td>Due to network maintenance at Ludwig-Maximilians-University Munich, the backend is temporarily unavailable. Sorry for the inconvenience.</td></center></tr> -->
+        <tr>
+            <td>
+                <h1 id="pageTitle">Music Ngram Viewer by Peachnote</h1>
+            </td>
+            <td>
+                <div id="libLogo"></div>
+            </td>
+            <td>
+                <div id="twitterContainer">
+                    <!--
+                      <div id="fb-like-button"></div>
+                      <div id="custom-buzz-button">
+                        <a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="small-button"></a>
+                      </div>
+                     -->
+                    <div id="custom-tweet-button">
+                        <a href="http://twitter.com/share?url=http%3A%2F%2Fwww.peachnote.com" target="_blank">Tweet</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div id="paramWrapper">
+        <table id="params">
+            <tr>
+                <td colspan="3" style="font-weight:bold;">
+
+                    Please enter a melody or a sequence of
+                    <a href="index.html#!nt=chordAffine&npq=50_3_4+-7_3_4+-7_5_3_6">chords</a> (<span id="helpLinkContainer"></span>)
+
+                    <!--(also see <span id="exampleSearchesContainer"><a href="example-searches.html">example searches</a></span>)-->
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+
+                    <div id="flashKeyboard">
+                        <object id="virtualPiano" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="340" height="68" wmode="transparent">
+                            <param name="movie" value="piano.swf" />
+                            <!--[if !IE]>-->
+                            <object type="application/x-shockwave-flash" data="piano.swf" width="340" height="68" wmode="transparent">
+                                <!--<![endif]-->
+                                <!--[if !IE]>-->
+                            </object>
+                            <!--<![endif]-->
+                        </object>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td id="contentContainer"></td>
+                <td id="ngramTypeContainer"></td>
+                <td id="sendButtonContainer"></td>
+            </tr>
+            <tr>
+                <td><span id="collectionSelectorContainer"></span></td>
+                <td><span id="smootheningContainer"></span></td>
+                <td id="normalizeContainer"></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="color:red;" id="errorLabelContainer"></td>
+            </tr>
+        </table>
+
+        <div id="canvas_div" align="center">
+        </div>
+    </div>
+
+    <div style="clear:both">
+        <table style="margin-top: 10px;">
+            <tr>
+                <td colspan="2">
+                    <div id="notFoundContainer"></div>
+                    <div id="sequenceTranscriptionsContainer"></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div id="chartContainer"></div>
+                </td>
+                <td>
+                    <div id="scoreHitsContainer"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="scoreRangeContainer"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <!--
+      <div id="comments_wrapper">
+      </div>
+    -->
+
+</div><!-- wrapper -->
+
+<div id="collectionNotice" style="text-align: center; ">
+</div>
+
+<div class="datasetText" style="text-align: center; ">
+    Run your own experiment! Raw data is available for download
+    <a href="http://www.peachnote.com/datasets.html">here</a>.
+</div>
+
+<!--
+	<table id="showCommentsContainer">
+		<tr><td><a href="quality_form.html">Give us feedback</a></td></tr>
+    </table>
+-->
+
+<div id="commentsContainer" style="display:none;">
+
+    <div id="disqus_thread"></div>
+
+</div>
+
+<div id="footer">
+    <div id="about" style="border-top: 1px solid #ccc;">&copy; 2011 Vladimir Viro
+        -
+        <a href='http://www.peachnote.com/info.html'>About Music Ngram Viewer</a>
+        -
+        <a href='http://www.peachnote.com/datasets.html'>Data</a>
+        -
+        <a href='http://www.peachnote.com/api.html'>API</a>
+        -
+        <a href='http://www.peachnote.com/viewer'>Score Viewer</a>
+        -
+        <a href='http://www.peachnote.com/similarity'>Score Similarity</a>
+        -
+        <a href='mailto:info@peachnote.com'>Contact</a>
+        -
+        <a href='http://twitter.com/#!/peachnote'
+           onclick='javascript:_gaq.push(["_trackEvent", "Site", "Twitter@footer"]);'
+                >@Peachnote</a> on Twitter
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    var is_ssl = ("https:" == document.location.protocol);
+    var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+    document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    var feedback_widget_options = {};
+
+    feedback_widget_options.display = "overlay";
+    feedback_widget_options.company = "peachnote";
+    feedback_widget_options.placement = "right";
+    feedback_widget_options.color = "#222";
+    feedback_widget_options.style = "idea";
+    if (typeof GSFN != 'undefined')
+        var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+
+</body>
+</html>

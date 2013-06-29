@@ -2,12 +2,14 @@
 
 <soundtoy version="0.1">
 
-    <info name="Drum 1" date="2006" author="iq" link="http://www.iquilezles.org">
-    <comments>a simple drum sound</comments>
+    <info name="Drum 2" date="2006" author="iq" link="http://www.iquilezles.org">
+    <comments>a drum</comments>
     </info>
 
     <options applyeffects="yes"/>
 
-    <code>y = max(-1.0,min(1.0,8.0*sin(3000*t*exp(-6*t))));</code>
+    <code>y  = 0.5*noise(32000*t)*exp(-32*t);
+y += 2.0*noise(3200*t)*exp(-32*t);
+y += 3.0*cos(400*(1-t)*t)*exp(-4*t);</code>
 
 </soundtoy>

@@ -1,0 +1,427 @@
+/** Add css rules here for your application. */
+/** Example rules used by the template application (remove for your app) */
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+	color: #777777;
+	padding-left: 48px;
+}
+
+h1 a {
+	margin-left: -15px;
+	margin-bottom: 10px;
+	text-decoration: none;
+	color: #777777;
+}
+
+.about p {
+	font-family: arial, sans-serif;
+	line-height: 22px;
+	color: #222;
+	font-size: .813em;
+}
+
+blockquote p,table {
+	font-size: .81em;
+	line-height: 1.5;
+	font-family: arial, sans-serif;
+}
+
+blockquote h2 {
+	padding-top: 30px;
+}
+
+.ad p,center {
+	font-family: Helvetica Neue, Arial, sans-serif;
+	line-height: 2em;
+	color: #222;
+	font-size: 1em;
+}
+
+h1 table {
+	margin-bottom: 25px;
+}
+
+h2 {
+	color: #333;
+	font-size: 1.85em;
+	margin: 0 0 1em;
+	padding: 13px 0 0;
+	font-weight: normal;
+	line-height: 1.25;
+}
+
+body {
+	max-width: 1000px;
+	padding: 15px;
+}
+
+pre {
+	background: #EEE;
+	border: 1px solid #CCC;
+	padding: .8em 1em;
+	font: 13px/1.38 monospace;
+	margin: 1em 0;
+}
+
+blockquote,ul,ol {
+	margin-bottom: 1em;
+	margin-top: 1em;
+}
+
+.sendButton {
+	display: block;
+	width: 96px;
+	height: 24px;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+	width: 400px;
+}
+
+.dialogVPanel {
+	margin: 5px;
+}
+
+.serverResponseLabelError {
+	color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+	margin: 15px 6px 6px;
+}
+
+#about {
+	border-top: 1px solid #CCC;
+	clear: both;
+	color: #777;
+	margin: 1.5em 0 0;
+	margin-bottom: 10px;
+	padding: .3em 0 0;
+	text-align: center;
+	list-style: none;
+}
+
+#chartContainer {
+	width: 860px;
+	height: 330px;
+	padding-left: 47px;
+}
+
+#params {
+	float: left;
+	margin-top: 20px;
+	margin-left: 47px;
+	margin-right: 30px;
+	padding: 0px;
+}
+
+#paramWrapper {
+	padding: 0px;
+	margin: 0px;
+}
+
+#canvas_div {
+	float: left;
+	width: 48%;
+	padding-top: 3px;
+}
+
+table.scoreRange {
+	width: 900px;
+	border-spacing: 0px;
+	border: solid 1px;
+	border-left: 0px;
+	border-top: 0px;
+	margin-top: 10px;
+	border-color: grey;
+}
+
+table.scoreRange td {
+	border-top: solid 1px;
+	border-left: solid 1px;
+	border-color: grey;
+}
+
+.scoreRangeText {
+	margin-top: 10px;
+	margin-bottom: 8px;
+}
+
+.datasetText {
+	margin-top: 20px;
+}
+
+#scoreHitsContainer {
+	margin-left: 20px;
+}
+
+.scoreHit {
+	margin: 5px;
+	width: 470px;
+}
+
+.scoreHit .composer {
+	font-weight: bold;
+	font-size: small;
+}
+
+.scoreHit .year {
+	font-size: smaller;
+}
+
+.smaller {
+	font-size: smaller;
+}
+
+.scoreHit tr {
+	vertical-align: top;
+}
+
+.scoreHit .scoreLink {
+	margin-right: 10px;
+}
+
+.scoreHit .composer_title {
+	width: 290px;
+}
+
+.scoreHit .year {
+	
+}
+
+.scoreHit a img {
+	color: white;
+	border: none;
+	text-decoration: none;
+}
+
+#scoreHitsContainer {
+	
+}
+
+#scoreRangeContainer {
+	padding-left: 47px;
+}
+
+.moreResultsText {
+	font-size: smaller;
+	margin-left: 9px;
+}
+
+#twitterContainer {
+	float: right;
+	width: 100px;
+	margin-top: -2px;
+}
+
+#twitterContainer span {
+	margin-top: 3px;
+}
+
+#custom-buzz-button a {
+	float: right;
+	margin-top: 0px;
+	margin-left: 5px;
+}
+
+#custom-tweet-button a {
+	margin-top: 1px;
+	float: right;
+	width: 36px;
+	display: block;
+	padding: 2px 5px 2px 20px;
+	background: url('../img/twitter.ico') 1px center no-repeat;
+	border: 1px solid #ccc;
+	text-decoration: none;
+	color: #437792;
+}
+
+#emptyChartMessage {
+	text-align: center;
+	padding-top: 50px;
+	font-size: large;
+}
+
+.imslpTitle {
+	color: #9C2E3A;
+}
+
+#fb-like-button a {
+	float: right;
+	padding-top: 2px;
+	padding-left: 4px;
+}
+
+#commentsContainer {
+	width: 857px;
+	text-align: center;
+	padding-left: 55px;
+}
+
+#showCommentsContainer {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	font-size: smaller;
+}
+
+#showCommentsContainer a {
+	margin-bottom: 8px;
+	text-decoration: none;
+}
+
+#flashKeyboard { /*background-color: #CCC;*/
+	height: 68px;
+	width: 340px;
+	display: block;
+	background-image:
+		url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVQAAABECAIAAABRUVrNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUISURBVHhe7d0xThxLEAZg7kT0It8GCQkJiYzI5+AAXGAvgETsiAgiJCQyIjKifcWztR7v9Gx1LTt6o/U3km0Jesc91VX9/3911ezJDxcLsMBfaYGTeOrX19d13/X+/n52dnbSd52enjbvent723eDz1GPj499U/scFc8SM+wcv1qt+qcxZaKSNZpzizv3T+Pm5qbz6WJYmK7fGqVpxAo2pxHT63+WkteV3KA0jfkWZVY/73eD5sgwfgSL4O9yV8E/NJPgH1pjakcW/I19Z1aj9GMd5B+uDeTf2xqCv4GfaP/QKGGN+Rhmk9qh/T2kbr5FmRXk0P5tC9D8Q4sIfsE/tUfQ/BJ+v30D7Uf7EzYh279lINn+oUFKaXbZ/iExKR1nBMNF+9H+XT6A9qP9aH/bArL9exNdR32O+pKNVbZftn+Hi6D9aH+yg1S1kHP+DZ6j/Wg/2o/25+kh2f69RZAiH0U+uQiar55Ekc/ehw7zLYoiH+W9vzYFFX5buyPNT/PT/Lr68uqSUuqnVG4A+bX0JnuQrj5dfVMuQvPT/DT/ugS5aD/aj/aj/Wh/+aU1+fnNzhEaezT2aOw5oflpfpq/QECU9yrvzVVuk3rMev6pwk+FXyn1APkhP+SH/HuKINl+2f6cB80HMir8VPiVUoASfhJ+e2IdzU/z51hH829spLxXee+OgCmVMHqTT2Nj8QLPoVG09Grp1dKrpTfXg1p6tfTmtValV1ai/Wj/FPwq71Xeq7y3cMbmu/pyDrOutRjMdwQzaz1Ljx12jJHtl+2X7Vfe61t6s9SQll4tvVp6fUX3H2SqlAGZj2Eq8lHkUxICaD/aj/aj/Wg/2v9ayDuq8FPhp8Jvjfbvzbcd9Tnqc9RXgFxHfT3KVktvaiWan+an+Wl+mp/mp/kHcFkqdtbPr58/z4A46hvaiOan+Wl+mj/vKCl1vNL8NH9igdWK5qf5aX6an+an+Wn+3XAZqrV0sq2lV0uvlt4MWT5/X9I1/8+bfD4+PoItfx9dsSOMfziVBX14eBgPvrq6uri4iL+3rpeXl1TAbAaU3uTz9PQ0nsb19fX5+fl4Gm9vb1Mb2Xhw3CHus3XzsEZYb3yT2E/7p3F3d9dvjdKbfOIBxw9yeXkZizKeXqxgcxph//HguEPcp9+kTROVYiOs1LkoMdvSojT9fCoU7+/vv42uf/67xj+v+nm/GzRH7nPOP/VfHmQr6k//7phG/3v7mzeJj5f87OsdNaaR+vFyFmU5fp4abfcAwd+wz3L8zB60WZ7lLIrgb8TMcowC+TfLU6L9CEiKpeFay/HzdLaQv2yi5YAM5If8s6rs2MhO4s9BxHY5zv78QMzhINOA/JB/vkQM5Ef7k40O3x4a6JisIfgFv+Av8DzBPzTWoRhuYQFaQ2X7ZfsTF5IBGRpIwq/tLsuhQzQ/zU/zp7wA8kN+yJ+Gye8BkB/y5+5yTCrXiePwxHE5DDf3wp0jID/kh/yFIIL8kD93F8jvqG/KS2T7G5Y5lFEk/CT8JPxSgEL70X60Pw0TCb/MRMtJhEB+yA/5s3hdQ37ID/nTMIH8mYkg/7GmuBz1OepLol/wC/4pFzmms4/l+HkGx8nv0X60H+0vBJFzfuf8ubscE9ah/UdO+2OBfx6z7339fCPIV66Yw0Gm8fz8/JVpxMfj1bRfuUN8Nu5gGhsbHpM1luPnX3TRiLVfb/KJf1wswAJ/mwX+BYQbtuAGVj4vAAAAAElFTkSuQmCC);
+}
+
+#exampleSearchesLink {
+	
+}
+
+#footer a {
+	text-decoration: none;
+}
+
+.textFilter {
+	width: 120px;
+	margin-left: 7px;
+}
+
+.gwt-TextBox-help {
+	color: #777;
+}
+
+.textFilterTip {
+	margin-left: 7px;
+}
+
+.gwt-PopupPanel.grayBorder {
+	border: 3px solid #CCC;
+	padding-bottom: 5px;
+}
+
+.gwt-PopupPanel.grayBorder.usageHelp {
+	padding-bottom: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+}
+
+.gwt-PopupPanel.grayBorder.usageHelp a {
+	text-decoration: none;
+}
+
+.notFoundMessage {
+	padding-bottom: 8px;
+}
+
+.notFoundMessage a {
+	text-decoration: none;
+}
+
+#notFoundContainer {
+	padding-left: 47px;
+}
+
+#sequenceTranscriptionsContainer {
+	padding-left: 47px;
+}
+
+#helpLinkContainer {
+	
+}
+
+#libLogo {
+	margin-top: 2px;
+	float: right;
+}
+
+#collectionNotice {
+	margin-top: 15px;
+}
+
+table.api {
+	margin-left: 30px;
+	margin-top: 20px;
+	background-color: ghostWhite;
+}
+
+.api tr {
+	border-spacing: 15px;
+}
+
+.api td {
+	width: 600px;
+	font-size: 1.1em;
+}
+
+.api td.varName {
+	width: 100px;
+}
+
+.ad verbatim {
+	font-size: 0.8em;
+	font-family: arial;
+}
+
+kbd {
+	background: #EEE;
+	border-color: #CCC #AAA #888 #BBB;
+	border-style: solid;
+	border-width: 1px 3px 4px 2px;
+	color: black;
+	font-weight: 700;
+	padding: 5px;
+	font-size: 11px;
+	margin: 0 2px;
+	white-space: nowrap;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.popups-close {
+	float: right;
+}
+
+.popups-box table {
+	line-height: 2.5;
+	border-spacing: 0px;
+}
+
+td.popups-cl,td.popups-cr {
+	background-position: -10px 0;
+	background-repeat: repeat-y;
+}
+
+.popups-container {
+	background-color: white;
+}
+
+.popups-title {
+	background-color: white;
+	color: black;
+	border: none;
+	border-bottom: 1px solid #D8D8D8;
+	border-image: initial;
+}
+
+.popups-close a {
+	color: #069;
+	font-size: 11px;
+}
+
+td.popups-border {
+	background-color: gray;
+}
+
+#shortcuts-text {
+	text-decoration: underline;
+}

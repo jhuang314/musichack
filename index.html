@@ -1,10 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Music Hack </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<head>
-<title>Sound Toy</title>
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
 
-<script type="text/javascript" src="soundtoy.js"></script>
-<script type="text/javascript" src="linesForTextarea.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--<script type="text/javascript" src="linesForTextarea.js"></script>-->
 
 
 <script type="text/javascript">
@@ -12,7 +25,7 @@ var gSoundToy = null;
 
 function myInit()
 {
-    addLinesToTextArea('myShaderCode');
+    //addLinesToTextArea('myShaderCode');
 
     gSoundToy = new SoundToy(null);
     if( !gSoundToy.mCreated )
@@ -62,8 +75,145 @@ function myInit()
         //-----------------------------------
 
         if( note==666 ) return;
-
+		var k = note;
         gSoundToy.noteOn( note );
+		var offset = 2;
+		
+		switch (k) {
+
+			case 0: 
+				updateScore("c/"+offset);
+				break;
+			case 1: 
+				updateScore("c#/"+offset);
+				break;
+
+			case 2: 
+				updateScore("d/"+offset);
+				break;
+
+			case 3: 
+				updateScore("d#/"+offset);
+				break;
+
+			case 4: 
+				updateScore("e/"+offset);
+				break;
+
+			case 5: 
+				updateScore("f/"+offset);
+				break;
+
+			case 6: 
+				updateScore("f#/"+offset);
+				break;
+
+			case 7: 
+				updateScore("g/"+offset);
+				break;
+
+			case 8: 
+				updateScore("g#/"+offset);
+				break;
+
+			case 9: 
+				updateScore("a/"+offset);
+				break;
+
+			case 10: 
+				updateScore("a#/"+offset);
+				break;
+
+			case 11: 
+				updateScore("b/"+offset);
+				break;
+
+			case 12: 
+				updateScore("c/"+(offset+1));
+				break;
+
+			case 13: 
+				updateScore("c#/"+(offset+1));
+				break;
+
+			case 14: 
+				updateScore("d/"+(offset+1));
+				break;
+
+			case 15: 
+				updateScore("d#/"+(offset+1));
+				break;
+
+			case 16: 
+				updateScore("e/"+(offset+1));
+				break;
+
+			case 17: 
+				updateScore("f/"+(offset+1));
+				break;
+
+			case 18: 
+				updateScore("f#/"+(offset+1));
+				break;
+
+			case 19: 
+				updateScore("g/"+(offset+1));
+				break;
+
+			case 20: 
+				updateScore("g#/"+(offset+1));
+				break;
+
+			case 21: 
+				updateScore("a/"+(offset+1));
+				break;
+
+			case 22: 
+				updateScore("a#/"+(offset+1));
+				break;
+
+			case 23: 
+				updateScore("b/"+(offset+1));
+				break;
+
+			case 24: 
+				updateScore("c/"+(offset+2));
+				break;
+
+			case 25: 
+				updateScore("c#/"+(offset+2));
+				break;
+
+			case 26: 
+				updateScore("d/"+(offset+2));
+				break;
+
+			case 27: 
+				updateScore("d#/"+(offset+2));
+				break;
+
+			case 28: 
+				updateScore("e/"+(offset+2));
+				break;
+
+			case 29: 
+				updateScore("f/"+(offset+2));
+				break;
+
+			case 30: 
+				updateScore("f#/"+(offset+2));
+				break;
+
+			case 31: 
+				updateScore("g/"+(offset+2));
+				break;
+
+			case 666: 
+				break;
+
+
+		}
+
     }
 
 
@@ -105,237 +255,149 @@ function loadPreset()
 
 </script>
 
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.js"></script>
+    <![endif]-->
 
-</head>
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../ico/favicon.png">
+  </head>
 
-<body onload="myInit()">
-<link href="style.css" rel=stylesheet type=text/css>
+  <body onload="myInit()">
 
-<table border="0" align="center" width="100%">
-<tr>
-  <td width="8"></td>
-  <td align="left" style='font-size:12px'>
-    <font style='font-size:36px'>Music Hack</font> 
-	<br><br>
-  </td>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Music Hack</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="Email">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
 
-  <td width="8"></td>
-</tr>
-</table>
+    <div class="container">
 
-<br>
+      <!-- Main hero unit for a primary marketing message or call to action -->
 
-
-
-<!-- --------------------------------------------------------------------------------------------------- -->
-<!-- --------------------------------------------------------------------------------------------------- -->
-<!-- --------------------------------------------------------------------------------------------------- -->
-<!--
-<div class="meter-wrap" style="background-color: #2020ff; width: 100%;">
-<div class="meter-value" style="background-color: #ff0000; width: 0%;" id="perc">
-<div id="meter-text">a
-</div>
-</div>
-</div>
--->
-
-<table border="0">
-<tr>
-
-  <td width="8"></td>
-
-  <td valign="top">
-    <table class="guiWindow">
-     <tr><td class="windotTitle">Presets</td></tr>
-     <tr><td valign="top">
-
-     <table style="font-size:12">
-
-       <tr><td valign="top">
-       <select class="userInput" id="myPresets">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span12">
+		  <div class="input-prepend input-append">
+		  <span class="add-on"><strong>Settings:</strong></span>
+		  <span class="add-on">Examples:</span>
+		  <select id="myPresets">
             <option value="piano1">Piano 1</option>
             <option value="piano2">Piano 2</option>
             <option value="guitar1">Guitar</option>
             <option value="flute1">Flute</option>
             <option value="drum1">Drum 1</option>
-       </select>
-       <input type="button" value="Load" class="userInputButtons" title="load the selected preset" onClick="loadPreset()"/>
-       </td>
+			</select>
+			<input type="button" value="Load" class="btn" title="load the selected preset" onClick="loadPreset()"/>
+		  </div>
+		<div class="input-prepend input-append pull-right"> 
+			<span class="add-on">Duration:</span>	
+			<input type="text" class="userInput" id="mySoundDuration" value="1" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setDuration()">
+			<span class="add-on">Volume:</span>
+			<input type="text" class="userInput" id="myVolume" value="100" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setVolume()">
+			<span class="add-on">Apply effects:
+			<input type="checkbox" class="userInput" id="myEffects" value="384" style="width:40px" title="vertical resolution, in pixels" onChange="javascript:gSoundToy.setEffects()">
+			</span>
+		</div>
+		</div>
+      </div>
+      <div class="row">
+        <div class="span6">
+          <h2>Graph:</h2>
+		  <canvas id="graph" width="540" height="262"></canvas>
 
-       <td width="16"></td>
+        </div>
+        <div class="span6">
+          <h2>Equations:</h2>
+		  <div class=input-prepend input-append">
+		  <span class="add-on"><strong>Enter Equation (ex. y = sin(w * t))</strong></span>
+		  <input type="button" value="Load Equation" onclick="javascript:gSoundToy.newSound()" class="btn" title="load Equ. (<ALT>+<ENTER>)" id="myResetButton"/>
+		  <input type="button" value="Help" title="help" class="btn" onclick="window.open('help.html','Help','width=760,height=480,status=yes,toolbar=no,scrollbars=yes')"/>
 
-       <td>
-       <table>
-       <tr>
-       <td>
-       <a href="http://www.gooogle.com" id="myInfo" style="text-decoration:none">Author</a>
-       </td>
-       </tr>
-       <tr>
-       <td>
-       <textarea class="userInput" rows="3" cols="40" readonly="readonly" id="myComments"></textarea>
-       </td>
-       </tr>
-       </table>
-       </td>
+		  </div>
+       <textarea rows="11"  class="span6" style="font-family:'courier';font-size:14" id="myShaderCode" wrap="off"></textarea>
 
-       </tr>
-     </table>
-
-     </td></tr>
-    </table>
-
-  </td>
-
-  <td width="8"></td>
-
-</tr>
-</table>
-
-<br>
-
-
-
-
-
-
-<table border="0">
-<tr>
-
- <td valign="top" width="8"></td>
-
- <td valign="top" align="left">
-
-     <table class="guiWindow">
-     <tr><td class="windotTitle">Wave</td></tr>
-
-<tr><td>
-
-<table>
-<tr>
-
-<td>Duration</td>
-<td width="8"></td>
-<td><input type="text" class="userInput" id="mySoundDuration" value="1" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setDuration()"></td>
-<td width="16"></td>
-<td>Volume</td>
-<td><input type="text" class="userInput" id="myVolume" value="100" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setVolume()"></td>
-<td width="16"></td>
-<td>Apply effects</td>
-<td width="8"></td>
-<td><input type="checkbox" class="userInput" id="myEffects" value="384" style="width:40px" title="vertical resolution, in pixels" onChange="javascript:gSoundToy.setEffects()"></td>
-
-</tr>
-</table>
-
-<!--
-Volume (0-100)</td><td width="8"></td><td><input type="text" class="userInput" id="mySoundDuration" value="100" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setVolume()"></td></tr>
-Apply effects</td><td width="8"></td><td><input type="checkbox" class="userInput" id="myYResolution" value="384" style="width:40px" title="vertical resolution, in pixels" onChange="javascript:gSoundToy.setEffects()"></td></tr>
-    -->
-</td></tr>
-
-     <tr><td>
-     <canvas id="graph" width="540" height="262"></canvas>
-     </td></tr>
-     </table>
-
- </td>
-
- <td valign="top" width="8"></td>
-
- <td valign="top" align="left">
-
-     <table class="guiWindow">
-       <tr><td colspan="2" class="windotTitle">Source: y = f(w,t)</td></tr>
-
-       <tr>
-       <td width="32px"></td>
-       <td>
-        <table>
-        <tr>
-        <td><input type="image" src="compile.png" onclick="javascript:gSoundToy.newSound()" style="" title="compile (<ALT>+<ENTER>)" id="myResetButton"/></td>
-        <td width="8px"></td>
-        <td><input type="image" src="help.png" style="" title="help" onclick="window.open('help.html','Help','width=760,height=480,status=yes,toolbar=no,scrollbars=yes')"/></td>
-        </tr>
-        </table>
-       </td>
-       </tr>
-
-       <tr>
-       <td width="32px" id="linesColumn"></td>
-       <td valign="top">
-       <textarea rows="11" cols="64" class="userInput" style="font-family:'courier';font-size:14" id="myShaderCode" wrap="off"></textarea>
-       </td>
-       </tr>
-
-       <tr>
-       <td width="32px"></td>
-       <td>
        <progress id="myProgressBar" min="0" max="100" value="0" style="width:100%"></progress>
-       </td>
-       </tr>
 
-       <tr>
-       <td width="32px"></td>
-       <td>
-       <textarea type="text" rows="3" cols="64" class="userInput" style="font-family:'courier';font-size:14" readonly="readonly" value="" id="errorTxtBox" ></textarea>
-       </td>
-       </tr>
-     </table>
-  </td>
-</tr>
-</table>
+	   <textarea type="text" rows="3" cols="64" class="span6" style="font-family:'courier';font-size:14" readonly="readonly" value="" id="errorTxtBox" ></textarea>
+       </div>
+      </div>
 
+      <hr>
+	  <div class="row">
+	  	<div class="span12">
+		  <div class="input-prepend input-append">
+		  	<span class="add-on"><strong>Keyboard</strong></span>
+		  	<span class="add-on">         Octaves:</span>
+			<label class="checkbox inline">
+			<input type="radio" class="userInput" name="octave" value="0"  onChange="javascript:gSoundToy.setOctave(0)"/> 0
+			</label>
+			<label class="checkbox inline">
+			<input type="radio" class="userInput" name="octave" value="1"  onChange="javascript:gSoundToy.setOctave(1)" checked/> 1
+			</label>
+			<label class="checkbox inline">
+			<input type="radio" class="userInput" name="octave" value="2"  onChange="javascript:gSoundToy.setOctave(2)"/> 2
+			</label>
+		  </div>
+		  <div class="well" style="background-color:gray;">
+       <canvas id="piano" width="1122" height="128"></canvas>
+	      </div>
+		</div>
+	  </div>
+	  <div class="row">
+	  	<div class="span12">
+			<center><canvas id="sheet" width=1000 height=200"></canvas></center>
+		</div>
+	  </div>
+      <hr>
 
+      <footer>
+        <p>&copy; Music Hack 2013</p>
+      </footer>
 
+    </div> <!-- /container -->
 
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./js/jquery.js"></script>
+	<script type="text/javascript" src="./js/vexflow-min.js"></script>
+	<script type="text/javascript" src="sheet.js"></script>
+	<script type="text/javascript" src="lib.js"></script>
 
-
-
-
-
-<br>
-<table border="0">
-<tr>
-
- <td valign="top" width="8"></td>
-
- <td>
- <table class="guiWindow">
-       <tr><td colspan="2" class="windotTitle">Keyboard</td></tr>
-
-     <tr><td>
-
-Octave
-<input type="radio" class="userInput" name="octave" value="0"  onChange="javascript:gSoundToy.setOctave(0)"/>
-<input type="radio" class="userInput" name="octave" value="1"  onChange="javascript:gSoundToy.setOctave(1)" checked/>
-<input type="radio" class="userInput" name="octave" value="2"  onChange="javascript:gSoundToy.setOctave(2)"/>
-<!--
- <input type="text" class="userInput" id="mySoundDuration" value="1" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setDuration()">
--->
-
-
-     </td></tr>
-
-       <tr><td><canvas id="piano" width="1122" height="128"></canvas></td></tr>
- </table>
- </td>
-</tr>
-</table>
-
-
-<!-- --------------------------------------------------------------------------------- -->
-
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-9257949-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-
-
-</body>
+  </body>
 </html>
