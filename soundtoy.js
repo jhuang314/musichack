@@ -21,9 +21,13 @@ function SoundToy(shaderCodeEditor)
     this.mCanvasPiano = document.getElementById("piano");
     this.mHttpReq = new XMLHttpRequest();
 
-                                     if( window.AudioContext )       this.mAudioContext = new AudioContext();
-    if( this.mAudioContext==null ) { if( window.webkitAudioContext ) this.mAudioContext = new webkitAudioContext(); }
-    if( this.mAudioContext==null )
+	if( window.AudioContext )
+		this.mAudioContext = new AudioContext();
+	if( this.mAudioContext==null ) { 
+		if( window.webkitAudioContext ) this.mAudioContext = new webkitAudioContext();
+	}
+
+	if( this.mAudioContext==null )
     {
         var div = document.createElement("div");
         div.innerHTML = "This demo requires a WebAudio-enabled browser.";
@@ -136,7 +140,7 @@ SoundToy.prototype.newSound = function()
       sid = 0;
       calcSample();
 
-/*
+///*
       var bar = document.getElementById("myProgressBar");
       bar.value = 0;
       for( var j=0; j<this.mNumNotes; j++ )
@@ -146,7 +150,7 @@ SoundToy.prototype.newSound = function()
           var w = 2.0*Math.PI*f;
           func(w,this.mSLen,this.mSamples[j]);
       }
-*/
+//*/
 
       this.drawGraph();
     }
@@ -171,7 +175,7 @@ SoundToy.prototype.drawGraph = function()
     ctx.fillRect(0, 0, xres, yres);
 
     ctx.strokeStyle = '#ffc040';
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 0.5;
 
     ctx.beginPath();
 
