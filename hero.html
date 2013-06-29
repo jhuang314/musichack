@@ -18,7 +18,7 @@
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<script type="text/javascript" src="soundtoy.js"></script>
-	<script type="text/javascript" src="linesForTextarea.js"></script>
+	<!--<script type="text/javascript" src="linesForTextarea.js"></script>-->
 
 
 <script type="text/javascript">
@@ -26,7 +26,7 @@ var gSoundToy = null;
 
 function myInit()
 {
-    addLinesToTextArea('myShaderCode');
+    //addLinesToTextArea('myShaderCode');
 
     gSoundToy = new SoundToy(null);
     if( !gSoundToy.mCreated )
@@ -177,6 +177,7 @@ function loadPreset()
       <div class="row">
         <div class="span12">
 		  <div class="input-prepend input-append">
+		  <span class="add-on"><strong>Settings:</strong></span>
 		  <span class="add-on">Examples:</span>
 		  <select id="myPresets">
             <option value="piano1">Piano 1</option>
@@ -200,47 +201,49 @@ function loadPreset()
       </div>
       <div class="row">
         <div class="span6">
-          <h2>Wave</h2>
+          <h2>Graph:</h2>
+		  <canvas id="graph" width="540" height="262"></canvas>
 
-
-		  <div class="input-prepend input-append">
-		  <span class="add-on">Examples:</span>
-		  <select id="myPresets">
-            <option value="piano1">Piano 1</option>
-            <option value="piano2">Piano 2</option>
-            <option value="guitar1">Guitar</option>
-            <option value="flute1">Flute</option>
-            <option value="drum1">Drum 1</option>
-			</select>
-			<input type="button" value="Load" class="btn" title="load the selected preset" onClick="loadPreset()"/>
-		  </div>
-
-		<div class="input-prepend input-append">
-			<span class="add-on">Duration:</span>	
-			<input type="text" class="userInput" id="mySoundDuration" value="1" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setDuration()">
-			<span class="add-on">Volume:</span>
-			<input type="text" class="userInput" id="myVolume" value="100" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setVolume()">
-			<span class="add-on">Apply effects:
-			<input type="checkbox" class="userInput" id="myEffects" value="384" style="width:40px" title="vertical resolution, in pixels" onChange="javascript:gSoundToy.setEffects()">
-			</span>
-		</div>
-
-
-
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
         <div class="span6">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>Equations:</h2>
+		  <div class=input-prepend input-append">
+		  <span class="add-on"><strong>Enter Equation (ex. y = sin(w * t))</strong></span>
+		  <input type="button" value="Load Equation" onclick="javascript:gSoundToy.newSound()" class="btn" title="load Equ. (<ALT>+<ENTER>)" id="myResetButton"/>
+		  <input type="button" value="Help" title="help" class="btn" onclick="window.open('help.html','Help','width=760,height=480,status=yes,toolbar=no,scrollbars=yes')"/>
+
+		  </div>
+       <textarea rows="11"  class="span6" style="font-family:'courier';font-size:14" id="myShaderCode" wrap="off"></textarea>
+
+       <progress id="myProgressBar" min="0" max="100" value="0" style="width:100%"></progress>
+
+	   <textarea type="text" rows="3" cols="64" class="span6" style="font-family:'courier';font-size:14" readonly="readonly" value="" id="errorTxtBox" ></textarea>
        </div>
       </div>
 
       <hr>
+	  <div class="row">
+	  	<div class="span12">
+		  <div class="input-prepend input-append">
+		  	<span class="add-on"><strong>Keyboard</strong></span>
+		  	<span class="add-on">         Octaves:</span>
+			<label class="checkbox inline">
+			<input type="radio" class="userInput" name="octave" value="0"  onChange="javascript:gSoundToy.setOctave(0)"/> 0
+			</label>
+			<label class="checkbox inline">
+			<input type="radio" class="userInput" name="octave" value="1"  onChange="javascript:gSoundToy.setOctave(1)" checked/> 1
+			</label>
+			<label class="checkbox inline">
+			<input type="radio" class="userInput" name="octave" value="2"  onChange="javascript:gSoundToy.setOctave(2)"/> 2
+			</label>
+		  </div>
+       <canvas id="piano" width="1122" height="128"></canvas>
+		</div>
+	  </div>
+      <hr>
 
       <footer>
-        <p>&copy; Company 2013</p>
+        <p>&copy; Music Hack 2013</p>
       </footer>
 
     </div> <!-- /container -->
