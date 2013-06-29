@@ -1,0 +1,19 @@
+---
+applications:
+  .:
+    name: musichack
+    framework:
+      name: php
+      info:
+        mem: 128M
+        description: PHP Application
+        exec: 
+    infra: aws
+    url: ${name}.${target-base}
+    mem: '256'
+    instances: 1
+    services:
+      mongodb-6a1e6:
+        type: mongodb
+      mysql-e784a:
+        type: mysql

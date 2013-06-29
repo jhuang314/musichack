@@ -1,0 +1,354 @@
+<html>
+
+<head>
+<title>Sound Toy</title>
+<meta name="Keywords" content="quilez, iñigo, fractals, demoscene, computer graphics, mathematics, rendering, demo, 3D, realtime, shader, raytracing, webgl, glsl">
+<meta name="Description" content="Sound Toy">
+<meta name="Author" content="Iñigo Quilez">
+
+<script type="text/javascript" src="soundtoy.js"></script>
+<script type="text/javascript" src="linesForTextarea.js"></script>
+
+
+<script type="text/javascript">
+var gSoundToy = null;
+
+function myInit()
+{
+    addLinesToTextArea('myShaderCode');
+
+    gSoundToy = new SoundToy(null);
+    if( !gSoundToy.mCreated )
+        return;
+
+    window.onkeydown = function(ev)
+    {
+        var note = 666;
+//alert( ev.keyCode );
+        //-----------------------------------
+        if(   ev.keyCode==90 )  note= 0; // C 0
+          if( ev.keyCode==83 )  note= 1; // C#0
+        if(   ev.keyCode==88 )  note= 2; // D 0
+          if( ev.keyCode==68 )  note= 3; // D#0
+        if(   ev.keyCode==67 )  note= 4; // E 0
+        if(   ev.keyCode==86 )  note= 5; // F 0
+          if( ev.keyCode==71 )  note= 6; // F#0
+        if(   ev.keyCode==66 )  note= 7; // G 0
+          if( ev.keyCode==72 )  note= 8; // G#0
+        if(   ev.keyCode==78 )  note= 9; // A 0
+          if( ev.keyCode==74 )  note=10; // A#0
+        if(   ev.keyCode==77 )  note=11; // B 0
+        if(   ev.keyCode==188 ) note=12; // C 0
+
+        //-----------------------------------
+        if(   ev.keyCode==81 )  note=12; // C 1
+          if( ev.keyCode==50 )  note=13; // C#1
+        if(   ev.keyCode==87 )  note=14; // D 1
+          if( ev.keyCode==51 )  note=15; // D#1
+        if(   ev.keyCode==69 )  note=16; // E 1
+        if(   ev.keyCode==82 )  note=17; // F 1
+          if( ev.keyCode==53 )  note=18; // F#1
+        if(   ev.keyCode==84 )  note=19; // G 1
+          if( ev.keyCode==54 )  note=20; // G#1
+        if(   ev.keyCode==89 )  note=21; // A 1
+          if( ev.keyCode==55 )  note=22; // A#1
+        if(   ev.keyCode==85 )  note=23; // B 1
+        //-----------------------------------
+        if( ev.keyCode==73 )    note=24; // C 2
+          if( ev.keyCode==57 )  note=25; // C#2
+        if( ev.keyCode==79 )    note=26; // D 2
+          if( ev.keyCode==48 )  note=27; // D#2
+        if( ev.keyCode==80 )    note=28; // E 2
+        if(   ev.keyCode==219 ) note=29; // F 2
+          if( ev.keyCode==187 ) note=30; // F#2
+        if(   ev.keyCode==221 ) note=31; // G 2
+        //-----------------------------------
+
+        if( note==666 ) return;
+
+        gSoundToy.noteOn( note );
+    }
+
+
+    //look in the url for the shader to be loaded
+    var shadername = "piano1";
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for( var i=0; i<hashes.length; i++ )
+    {
+        var hash = hashes[i].split('=');
+        if( hash[0] == "p" )
+        {
+            shadername = decodeURI(hash[1]).toLowerCase().replace(/\s/g, "");
+            break;
+        }
+    }
+    // set the combo box
+    var no = document.getElementById("myPresets").options;
+    for( var i=0; i<no.length; i++ )
+    {
+        if( no[i].value == shadername )
+        {
+              document.getElementById("myPresets").selectedIndex = i;
+              break;
+        }
+    }
+
+
+    var res = gSoundToy.newScript("presets/"+shadername+".xml");
+}
+
+
+function loadPreset()
+{
+    var no=document.getElementById("myPresets");
+    var txt = "presets/" + no.options[no.selectedIndex].value + ".xml";
+
+    gSoundToy.newScript( txt );
+}
+
+</script>
+
+
+</head>
+
+<body onload="myInit()">
+<link href="style.css" rel=stylesheet type=text/css>
+
+<table border="0" align="center" width="100%">
+<tr>
+  <td width="8"></td>
+  <td align="left" style='font-size:12px'>
+    <font style='font-size:36px'>Sound Toy v0.1</font> by Inigo Quilez 2011 (iq/rgba), <a style="text-decoration:none" href="http://www.iquilezles.org">http://www.iquilezles.org</a><br><br>
+    <font style='font-size:11px'>
+    · 17 sounds, 3 contributos: Interface/BoaH, neolit123, iq/rgba (send me your sounds and i'll probably add them to the preset list)<br>
+    <font color="ffff00">· Please remember it probably makes sense to credit the authors if you reuse these sound formulas in your blog, software,
+demo, or portafolio.</font><br>
+    · You can directly link to Sound Toy with a sound preset parameter like this: "http://www.iquilezles.org/apps/soundtoy/?p=Piano%202" or "http://www.iquilezles.org/apps/soundtoy/?p=piano2"
+    </font>
+
+  </td>
+
+  <td width="8"></td>
+</tr>
+</table>
+
+<br>
+
+
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!--
+<div class="meter-wrap" style="background-color: #2020ff; width: 100%;">
+<div class="meter-value" style="background-color: #ff0000; width: 0%;" id="perc">
+<div id="meter-text">a
+</div>
+</div>
+</div>
+-->
+
+<table border="0">
+<tr>
+
+  <td width="8"></td>
+
+  <td valign="top">
+    <table class="guiWindow">
+     <tr><td class="windotTitle">Presets</td></tr>
+     <tr><td valign="top">
+
+     <table style="font-size:12">
+
+       <tr><td valign="top">
+       <select class="userInput" id="myPresets">
+            <option value="piano1">Piano 1</option>
+            <option value="piano2">Piano 2</option>
+            <option value="spacepiano">Space Piano</option>
+            <option value="bell">Bell</option>
+            <option value="guitar1">Guitar</option>
+            <option value="flute1">Flute</option>
+            <option value="rythm1">Rythm</option>
+            <option value="drum1">Drum 1</option>
+            <option value="drum2">Drum 2</option>
+            <option value="drum3">Drum 3</option>
+            <option value="organ1">Organ 1</option>
+            <option value="organ2">Organ 2</option>
+            <option value="organ3">Organ 3</option>
+            <option value="organ4">Organ 4</option>
+            <option value="fm1">FM 1</option>
+            <option value="fm2">FM 2</option>
+            <option value="fm3">FM 3</option>
+       </select>
+       <input type="button" value="Load" class="userInputButtons" title="load the selected preset" onClick="loadPreset()"/>
+       </td>
+
+       <td width="16"></td>
+
+       <td>
+       <table>
+       <tr>
+       <td>
+       <a href="http://www.gooogle.com" id="myInfo" style="text-decoration:none">Author</a>
+       </td>
+       </tr>
+       <tr>
+       <td>
+       <textarea class="userInput" rows="3" cols="40" readonly="readonly" id="myComments"></textarea>
+       </td>
+       </tr>
+       </table>
+       </td>
+
+       </tr>
+     </table>
+
+     </td></tr>
+    </table>
+
+  </td>
+
+  <td width="8"></td>
+
+</tr>
+</table>
+
+<br>
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------- -->
+<table border="0">
+<tr>
+
+ <td valign="top" width="8"></td>
+
+ <td valign="top" align="left">
+
+     <table class="guiWindow">
+     <tr><td class="windotTitle">Wave</td></tr>
+
+<tr><td>
+
+<table>
+<tr>
+
+<td>Duration</td>
+<td width="8"></td>
+<td><input type="text" class="userInput" id="mySoundDuration" value="1" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setDuration()"></td>
+<td width="16"></td>
+<td>Volume</td>
+<td><input type="text" class="userInput" id="myVolume" value="100" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setVolume()"></td>
+<td width="16"></td>
+<td>Apply effects</td>
+<td width="8"></td>
+<td><input type="checkbox" class="userInput" id="myEffects" value="384" style="width:40px" title="vertical resolution, in pixels" onChange="javascript:gSoundToy.setEffects()"></td>
+
+</tr>
+</table>
+
+<!--
+Volume (0-100)</td><td width="8"></td><td><input type="text" class="userInput" id="mySoundDuration" value="100" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setVolume()"></td></tr>
+Apply effects</td><td width="8"></td><td><input type="checkbox" class="userInput" id="myYResolution" value="384" style="width:40px" title="vertical resolution, in pixels" onChange="javascript:gSoundToy.setEffects()"></td></tr>
+    -->
+</td></tr>
+
+     <tr><td>
+     <canvas id="graph" width="540" height="262"></canvas>
+     </td></tr>
+     </table>
+
+ </td>
+
+ <td valign="top" width="8"></td>
+
+ <td valign="top" align="left">
+
+     <table class="guiWindow">
+       <tr><td colspan="2" class="windotTitle">Source: y = f(w,t)</td></tr>
+
+       <tr>
+       <td width="32px"></td>
+       <td>
+        <table>
+        <tr>
+        <td><input type="image" src="compile.png" onclick="javascript:gSoundToy.newSound()" style="" title="compile (<ALT>+<ENTER>)" id="myResetButton"/></td>
+        <td width="8px"></td>
+        <td><input type="image" src="help.png" style="" title="help" onclick="window.open('help.html','Help','width=760,height=480,status=yes,toolbar=no,scrollbars=yes')"/></td>
+        </tr>
+        </table>
+       </td>
+       </tr>
+
+       <tr>
+       <td width="32px" id="linesColumn"></td>
+       <td valign="top">
+       <textarea rows="11" cols="64" class="userInput" style="font-family:'courier';font-size:14" id="myShaderCode" wrap="off"></textarea>
+       </td>
+       </tr>
+
+       <tr>
+       <td width="32px"></td>
+       <td>
+       <progress id="myProgressBar" min="0" max="100" value="0" style="width:100%"></progress>
+       </td>
+       </tr>
+
+       <tr>
+       <td width="32px"></td>
+       <td>
+       <textarea type="text" rows="3" cols="64" class="userInput" style="font-family:'courier';font-size:14" readonly="readonly" value="" id="errorTxtBox" ></textarea>
+       </td>
+       </tr>
+     </table>
+  </td>
+</tr>
+</table>
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------- -->
+<!-- --------------------------------------------------------------------------------------------------- -->
+<br>
+<table border="0">
+<tr>
+
+ <td valign="top" width="8"></td>
+
+ <td>
+ <table class="guiWindow">
+       <tr><td colspan="2" class="windotTitle">Keyboard</td></tr>
+
+     <tr><td>
+
+Octave
+<input type="radio" class="userInput" name="octave" value="0"  onChange="javascript:gSoundToy.setOctave(0)"/>
+<input type="radio" class="userInput" name="octave" value="1"  onChange="javascript:gSoundToy.setOctave(1)" checked/>
+<input type="radio" class="userInput" name="octave" value="2"  onChange="javascript:gSoundToy.setOctave(2)"/>
+<!--
+ <input type="text" class="userInput" id="mySoundDuration" value="1" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setDuration()">
+-->
+
+
+     </td></tr>
+
+       <tr><td><canvas id="piano" width="1122" height="128"></canvas></td></tr>
+ </table>
+ </td>
+</tr>
+</table>
+
+
+<!-- --------------------------------------------------------------------------------- -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-9257949-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>
