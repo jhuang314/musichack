@@ -22,6 +22,7 @@
 
 <script type="text/javascript">
 var gSoundToy = null;
+var offset = 4;
 
 function myInit()
 {
@@ -77,8 +78,7 @@ function myInit()
         if( note==666 ) return;
 		var k = note;
         gSoundToy.noteOn( note );
-		var offset = 2;
-		
+	console.log("offset="+offset);	
 		switch (k) {
 
 			case 0: 
@@ -282,23 +282,8 @@ function loadPreset()
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
             </ul>
             <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
             </form>
           </div><!--/.nav-collapse -->
         </div>
@@ -364,13 +349,13 @@ function loadPreset()
 		  	<span class="add-on"><strong>Keyboard</strong></span>
 		  	<span class="add-on">         Octaves:</span>
 			<label class="checkbox inline">
-			<input type="radio" class="userInput" name="octave" value="0"  onChange="javascript:gSoundToy.setOctave(0)"/> 0
+			<input type="radio" class="userInput" name="octave" value="0"  onChange="javascript:gSoundToy.setOctave(0); offset=3; console.log('changed offset to 1');"/> 0
 			</label>
 			<label class="checkbox inline">
-			<input type="radio" class="userInput" name="octave" value="1"  onChange="javascript:gSoundToy.setOctave(1)" checked/> 1
+			<input type="radio" class="userInput" name="octave" value="1"  onChange="javascript:gSoundToy.setOctave(1); offset=4; console.log('changed offset to 2');" checked/> 1
 			</label>
 			<label class="checkbox inline">
-			<input type="radio" class="userInput" name="octave" value="2"  onChange="javascript:gSoundToy.setOctave(2)"/> 2
+			<input type="radio" class="userInput" name="octave" value="2"  onChange="javascript:gSoundToy.setOctave(2); offset=5;console.log('changed offset to 4')"/> 2
 			</label>
 		  </div>
 		  <div class="well" style="background-color:gray;">
@@ -380,9 +365,34 @@ function loadPreset()
 	  </div>
 	  <div class="row">
 	  	<div class="span12">
-			<center><canvas id="sheet" width=1000 height=200"></canvas></center>
+			<center><canvas id="sheet" width=1200 height=300"></canvas></center>
 		</div>
 	  </div>
+	  <script>
+	  var id="IMSLP00001";
+	  (function () {
+	   var pnsv = document.createElement('script'); pnsv.type = 'text/javascript'; pnsv.async = true;
+	   pnsv.src = 'http://pchnote.appspot.com/scoreviewer/scoreviewer.nocache.js';
+	   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(pnsv);
+	   })();
+var _pnq = _pnq || [];
+_pnq.push(['rootElement', 'PeachnoteViewerContainerId']);
+_pnq.push(['loadScore', id]);
+</script>
+			
+		<div class="row">
+		<div class="span12">
+		  <div id='PeachnoteViewerContainerId'></div>
+		</div>
+		</div>
+		<div class="row">
+			
+		  <div class=input-prepend input-append">
+		  <span class="add-on"><strong>Enter music id:</strong></span>
+		  <input type="text" id="searchbox">
+		  <input type="button" value="search" onclick="javascript: i_pnq.push(['loadScore', id]);" class="btn" title="id" id="search"/>
+		  </div>
+		</div>
       <hr>
 
       <footer>
