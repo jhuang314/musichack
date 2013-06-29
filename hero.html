@@ -175,6 +175,30 @@ function loadPreset()
 
       <!-- Example row of columns -->
       <div class="row">
+        <div class="span12">
+		  <div class="input-prepend input-append">
+		  <span class="add-on">Examples:</span>
+		  <select id="myPresets">
+            <option value="piano1">Piano 1</option>
+            <option value="piano2">Piano 2</option>
+            <option value="guitar1">Guitar</option>
+            <option value="flute1">Flute</option>
+            <option value="drum1">Drum 1</option>
+			</select>
+			<input type="button" value="Load" class="btn" title="load the selected preset" onClick="loadPreset()"/>
+		  </div>
+		<div class="input-prepend input-append pull-right"> 
+			<span class="add-on">Duration:</span>	
+			<input type="text" class="userInput" id="mySoundDuration" value="1" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setDuration()">
+			<span class="add-on">Volume:</span>
+			<input type="text" class="userInput" id="myVolume" value="100" style="width:40px" title="horizontal resolution, in pixels" onChange="javascript:gSoundToy.setVolume()">
+			<span class="add-on">Apply effects:
+			<input type="checkbox" class="userInput" id="myEffects" value="384" style="width:40px" title="vertical resolution, in pixels" onChange="javascript:gSoundToy.setEffects()">
+			</span>
+		</div>
+		</div>
+      </div>
+      <div class="row">
         <div class="span6">
           <h2>Wave</h2>
 
